@@ -1,0 +1,124 @@
+TestNG
+
+Also Called TDD Framework [Test Driven Development]
+
+1. purpose - design testcase in proper systematic way
+2. opensource
+3. Available in the form of jar file
+4. Also called, Java unit testing framework [meaning available only for Java] - each and every lang has diff testng
+5. Can generate good HTML reports
+6. Gives lot of other Annotation
+7. Prioritize testcase, dependency check, grouping 
+8. Most imp : is DATA PROVIDER feature [menas, login page with diff username and password. means, 10 set of data]
+
+How to install TestNG in Eclipse:
+Download TestNG plugin
+http://beust.com/eclipse
+
+1. Go to help
+2. Install new software
+3. Provide the url
+4. It will identify the plugin and install the TestNG
+
+//we never write main method in testNG
+
+Annotation Available:
+=======================
+
+1. BeforeSuite
+2. BeforeTest
+3. BeforeClass
+4. BeforeMethod
+5. Test
+6. AfterMethod
+7. AfterClass
+8. AfterTest
+9. AfterSuite
+
+Mostly we use,
+1. BeforeMethod
+2. Test
+3. AfterMethod
+
+Priority : 
+===========
+1. Tests can be run, based on priority. IF not it, will pick the test randomly
+2. The syntax is, priority="number"
+
+Dependency :
+============
+1. If any test is dependent on another test, we can use the keyword, "dependsOnMethod" on Annotation
+2. If any prior methods fails, other dependent method will be skipped.
+3. Syntax ; dependsOnMethod="dependent method name"
+4. Example :  dependsOnMethod="loginTest" //If login test fails, other dependency test will be skipped
+
+Results/report :
+=================
+
+1. TestNG tab has a simple report after test execution
+2. HTML report - available in the folder name "test-output", which we will get after executing Refresh of the project.
+
+
+Grouping:
+==========
+1. groups - keywords should be used in the annotation to group the test.
+2. This is useful in reporting
+3. syntax - groups="test"
+
+
+InvocationCount :
+=================
+1. If we wanted to execute any function multiple times, we will use the keyword "invocationCount" in the Annotation
+2. Syntax : invocationCount=10
+
+TimeOut :
+=========
+1. If any execution is stuck in infinite loop or any timeout issue
+2. We use "timeOut" or "invocationTimeOut"
+3. Should not use this normally, as these infinte loops should be handled in code
+4. Syntax : timeOut=2000 or invocationTimeOut=2 in the annotation
+
+
+Exception :
+==============
+1. Can specify the exception name in "expectedExceptions", if we are aware of any known exception.
+2. Syntax : expectedExceptions=Nameoftheexception.class
+3. Example :  expectedException=NumberFormatException.class
+4. Here, we dont want to use, try catch, if we really know the exception
+
+
+Parameters:
+==============
+1. Can get the data from testng.xml file itself and execute it.
+2. Store environment variable.
+3. we do not store test data in it
+4. We use @parameters next to @Test
+
+
+
+DataDriven :
+1. Excel file - test data
+2. Properties file - env variables, OR, test data
+3. testng.xml - env var
+4. xml file
+5. JSON file
+6. DB
+
+TimeOut & Exception = > we are not using more often
+
+
+Assertion :
+===========
+1. To validate the test case
+2. Can be used instead of if else condition
+3. Method: "Assert.assertEqual();" with parameters
+
+
+How to Run all the testcases one by one sequentially combined.
+==============================================================
+1. Have to create XML template file
+2. In that we have to specify the packagename.classname
+3. Example : com.TestNG.OneTestNGBasics then run as Testng suite
+4. Here we dont want to execute each file, which is configured in the xml
+5. We can directly run the xml
+
